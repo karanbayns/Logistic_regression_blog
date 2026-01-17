@@ -220,7 +220,7 @@ window.Quarto = {
 <p>The formula for this function is: <span class="math display">\[\sigma(z) = \frac{1}{1 + e^{-z}}\]</span> For a calculus student, the beauty of the sigmoid function lies in its limits as the input value approaches positive infinity or negative infinity. As your linear input (<span class="math inline">\(z\)</span>) becomes a very large positive number, the denominator <span class="math inline">\((1 + e^{-z})\)</span> approaches 1, meaning that the output approaches <strong>1</strong>. Conversely, as the input becomes a very large negative number, <span class="math inline">\(e^{-z}\)</span> grows toward infinity, making the whole fraction approach <strong>0</strong>. Right in the middle, when the input is exactly 0, the output is exactly <strong>0.5</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../DSCI_542_lab1_karanb18/img/logistic_regression.png" class="img-fluid figure-img"></p>
+<p><img src="img/logistic_regression.png" class="img-fluid figure-img"></p>
 <figcaption>Logistic Regression</figcaption>
 </figure>
 </div>
@@ -228,7 +228,7 @@ window.Quarto = {
 </section>
 <section id="how-the-model-learns-maximum-likelihood" class="level2">
 <h2 class="anchored" data-anchor-id="how-the-model-learns-maximum-likelihood">How the Model Learns: Maximum Likelihood</h2>
-<p>When you study calculus, you look for the maximum or minimum value of a function using derivatives. In logistic regression, the model does a similar optimization to learn from data.</p>
+<p>When you study calculus, you look for the maximum or minimum value of a function using first and second derivatives. In logistic regression, the model does a similar optimization to learn from data.</p>
 <p>In linear regression, we typically minimize the “sum of squared errors.”; however, in classification, all data points are either at 0 or 1. Using squared errors here would lead to a “non-convex” function, which is a nightmare for optimization because your calculus might lead you to a “local minimum” rather than the best possible answer.</p>
 <p>Instead, we use a method called <strong>Maximum Likelihood Estimation (MLE)</strong>. The goal is to find the settings or parameters that make our observed data “most likely” to have occurred.</p>
 <p>Imagine you have a bucket of red and blue marbles. If you blindly pick out five reds in a row, your mathematical intuition tells you that the bucket is likely mostly red. The model uses calculus to tweak its parameters until its predicted probabilities match the patterns it sees in your data as closely as possible.</p>
@@ -237,7 +237,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-log-loss-intuition-why-logarithms">The Log-Loss Intuition: Why Logarithms?</h2>
 <p>You may be wondering why we do not just use the raw probability to measure our errors. Why do we see logarithms everywhere in logistic regression formulas? This is where the mathematical intuition gets interesting.</p>
 <p>When we train a model, we need a way to punish it for being wrong. If the actual answer is <strong>1</strong> (e.g., the email is spam) and our model predicts a probability of <strong>0.99</strong>, the model is doing great! The penalty should be almost zero. But what if the model predicts a probability of <strong>0.01</strong> for that same spam email? It is not just slightly wrong; it is confidently wrong.</p>
-<p>This is where the <strong>logarithm</strong> comes in. If we look at the function <span class="math inline">\(y = -\log(x)\)</span>, something fascinating happens as we approach zero: * As the probability (<span class="math inline">\(x\)</span>) goes to 1, <span class="math inline">\(-\log(x)\)</span> goes to <strong>0</strong>. This means a low penalty for being right. * As the probability (<span class="math inline">\(x\)</span>) goes to 0, <span class="math inline">\(-\log(x)\)</span> goes to <strong>infinity</strong>. This means a massive penalty for being confidently wrong.</p>
+<p>This is where the <strong>logarithm</strong> comes in. If we look at the function <span class="math inline">\(y = -\log(x)\)</span>, something fascinating happens as we approach zero: * As the probability (<span class="math inline">\(x\)</span>) goes to 1, <span class="math inline">\(-\log(x)\)</span> goes to <strong>0</strong>. This means a low penalty for being right. * As the probability (<span class="math inline">\(x\)</span>) goes to 0, <span class="math inline">\(-\log(x)\)</span> goes to <span class="math inline">\(\infty\)</span>. This means a massive penalty for being confidently wrong.</p>
 <p>By using the log-loss function, we create a mathematical environment where the model is terrified of being certainly wrong. It “forces” the model to move its parameters much more aggressively when it makes a big mistake compared to when it is already close to the right answer. For a calculus student, you can think of this as creating a steep slope on the error surface when the model is far away from the truth, which helps the optimization process work much more efficiently.</p>
 </section>
 <section id="the-decision-boundary-making-the-call" class="level2">
@@ -249,8 +249,8 @@ window.Quarto = {
 <section id="why-this-matters" class="level2">
 <h2 class="anchored" data-anchor-id="why-this-matters">Why This Matters</h2>
 <p>For a student who is used to the rigid, continuous world of calculus, Logistic Regression can initially feel confusing because it mixes infinite lines with binary categories. However, the transition is quite elegant.</p>
-<p>You are not learning a new math. You are learning how to use your existing knowledge of functions, limits, and derivatives to solve a different kind of problem. You are taking a linear foundation and applying a logical “S-curve” to make it useful for decision-making.</p>
-<p>The next time you see a “black box” algorithm, remember that beneath the surface, it is just calculus doing the heavy lifting to turn raw data into meaningful classifications.</p>
+<p>You are not learning a new concept in math. You are learning how to use your existing knowledge of functions, limits, and derivatives to solve a different kind of problem. You are taking a linear foundation and applying a suitable “S-curve” to make it useful for decision-making.</p>
+<p>The next time you see a “black box” algorithm, remember that beneath the surface, it might just be calculus doing the heavy lifting to turn raw data into a meaningful model for predictions.</p>
 
 
 
@@ -259,7 +259,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1768291200000" data-listing-file-modified-sort="1768343535716" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="quarto-post image-right" data-index="0" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1768291200000" data-listing-file-modified-sort="1768688273249" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
 <div class="thumbnail"><a href="./posts/post-with-code/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/post-with-code/image.jpg" class="thumbnail-image">
@@ -293,7 +293,7 @@ Harlow Malloc
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="bmV3cw==" data-listing-date-sort="1768032000000" data-listing-file-modified-sort="1768343535715" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="quarto-post image-right" data-index="1" data-categories="bmV3cw==" data-listing-date-sort="1768032000000" data-listing-file-modified-sort="1768688273249" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
 <div class="thumbnail"><a href="./posts/welcome/index.html" class="no-external">
 
 <p class="card-img-top"><img src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
@@ -398,7 +398,7 @@ Tristan O’Malley
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/karanbayns\.github\.io\/Logistic_regression_blog\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
