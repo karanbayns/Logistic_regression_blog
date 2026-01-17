@@ -1,0 +1,1 @@
+Sitemap: https://karanbayns.github.io/Logistic_regression_blog/sitemap.xml

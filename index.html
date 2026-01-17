@@ -220,7 +220,7 @@ window.Quarto = {
 <p>The formula for this function is: <span class="math display">\[\sigma(z) = \frac{1}{1 + e^{-z}}\]</span> For a calculus student, the beauty of the sigmoid function lies in its limits as the input value approaches positive infinity or negative infinity. As your linear input (<span class="math inline">\(z\)</span>) becomes a very large positive number, the denominator <span class="math inline">\((1 + e^{-z})\)</span> approaches 1, meaning that the output approaches <strong>1</strong>. Conversely, as the input becomes a very large negative number, <span class="math inline">\(e^{-z}\)</span> grows toward infinity, making the whole fraction approach <strong>0</strong>. Right in the middle, when the input is exactly 0, the output is exactly <strong>0.5</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../DSCI_542_lab1_karanb18/img/logistic_regression.png" class="img-fluid figure-img"></p>
+<p><img src="img/logistic_regression.png" class="img-fluid figure-img"></p>
 <figcaption>Logistic Regression</figcaption>
 </figure>
 </div>
@@ -228,7 +228,7 @@ window.Quarto = {
 </section>
 <section id="how-the-model-learns-maximum-likelihood" class="level2">
 <h2 class="anchored" data-anchor-id="how-the-model-learns-maximum-likelihood">How the Model Learns: Maximum Likelihood</h2>
-<p>When you study calculus, you look for the maximum or minimum value of a function using derivatives. In logistic regression, the model does a similar optimization to learn from data.</p>
+<p>When you study calculus, you look for the maximum or minimum value of a function using first and second derivatives. In logistic regression, the model does a similar optimization to learn from data.</p>
 <p>In linear regression, we typically minimize the “sum of squared errors.”; however, in classification, all data points are either at 0 or 1. Using squared errors here would lead to a “non-convex” function, which is a nightmare for optimization because your calculus might lead you to a “local minimum” rather than the best possible answer.</p>
 <p>Instead, we use a method called <strong>Maximum Likelihood Estimation (MLE)</strong>. The goal is to find the settings or parameters that make our observed data “most likely” to have occurred.</p>
 <p>Imagine you have a bucket of red and blue marbles. If you blindly pick out five reds in a row, your mathematical intuition tells you that the bucket is likely mostly red. The model uses calculus to tweak its parameters until its predicted probabilities match the patterns it sees in your data as closely as possible.</p>
@@ -249,8 +249,8 @@ window.Quarto = {
 <section id="why-this-matters" class="level2">
 <h2 class="anchored" data-anchor-id="why-this-matters">Why This Matters</h2>
 <p>For a student who is used to the rigid, continuous world of calculus, Logistic Regression can initially feel confusing because it mixes infinite lines with binary categories. However, the transition is quite elegant.</p>
-<p>You are not learning a new math. You are learning how to use your existing knowledge of functions, limits, and derivatives to solve a different kind of problem. You are taking a linear foundation and applying a logical “S-curve” to make it useful for decision-making.</p>
-<p>The next time you see a “black box” algorithm, remember that beneath the surface, it is just calculus doing the heavy lifting to turn raw data into meaningful classifications.</p>
+<p>You are not learning a new concept in math. You are learning how to use your existing knowledge of functions, limits, and derivatives to solve a different kind of problem. You are taking a linear foundation and applying a suitable “S-curve” to make it useful for decision-making.</p>
+<p>The next time you see a “black box” algorithm, remember that beneath the surface, it might just be calculus doing the heavy lifting to turn raw data into a meaningful model for predictions.</p>
 
 
 
@@ -398,7 +398,7 @@ Tristan O’Malley
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/karanbayns\.github\.io\/Logistic_regression_blog\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
