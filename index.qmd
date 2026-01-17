@@ -1,0 +1,123 @@
+---
+title: "Logistic Regression"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+# From Calculus to Classification: A Simple Guide to Logistic Regression
+
+### Introduction: The Shift from Numbers to Categories
+
+If you are a mathematics student at a university like UBC, you have likely spent a lot of time learning how to draw straight lines on graphs.
+To make predictions in classic statistics, one draws a "line of best fit", formally known as linear regression, through data points to predict continuous values like house prices, temperatures, or test scores.
+This feels natural when the numbers follow a continuous and linear pattern.
+
+Now let's think about what happens when the answer is not a continuous number, but is instead a category.
+For example, imagine you are trying to predict whether an email is "spam" or "not spam," or whether a patient has a specific disease based on their symptoms.
+In these cases, there is no "in-between" and the outcome is binary.
+You are either in category A or category B.
+
+In machine learning, we call this **classification**.
+Instead of predicting "how much," we are now predicting "which one." Fortunately, if you understand differential calculus and the behavior of functions, you already have the prerequisite tools to understand how this works.
+
+## The Problem: Lines Do Not Stop
+
+In mathematics, a straight line ($y = mx + b$) is a powerful tool for modelling trends.
+However, a straight line with a non-zero slope ($m \neq 0$) is unbounded.
+It goes on forever in both directions.
+While this can be great for predicting how a house's value might grow over decades, it fails when applied to probability.
+
+If you use a straight line to predict the probability of something happening, the math eventually breaks reality.
+As the input $x$ increases, the y-value keep increasing.
+Eventually, your math might tell you that there is a **150% chance** of rain, or if the slope is negative, a **-20% chance** of a student passing an exam.
+
+In the real world, probability is strictly bounded.
+It is a fundamental rule that any probability value must be between 0 and 1.
+To solve this, we do not throw away the line.
+Instead, we need a mathematical "transformer" to take that unbounded line and squash it, so that it fits perfectly within the $[0, 1]$ interval.
+
+## The Solution: The "S" Curve
+
+To fix the infinite line problem, we use a special mathematical function called the **sigmoid function**.
+This function is the heart of logistic regression because it ensures that the y-values are always bounded between 0 and 1.
+
+The formula for this function is: $$\sigma(z) = \frac{1}{1 + e^{-z}}$$ For a calculus student, the beauty of the sigmoid function lies in its limits as the input value approaches positive infinity or negative infinity.
+As your linear input ($z$) becomes a very large positive number, the denominator $(1 + e^{-z})$ approaches 1, meaning that the output approaches **1**.
+Conversely, as the input becomes a very large negative number, $e^{-z}$ grows toward infinity, making the whole fraction approach **0**.
+Right in the middle, when the input is exactly 0, the output is exactly **0.5**.
+
+![Logistic Regression](../../DSCI_542_lab1_karanb18/img/logistic_regression.png)
+
+By using this "S-shaped" curve as a wrapper around our linear equation, we ensure that all y-values are between 0 and 1.
+We are no longer predicting a point on an infinite line.
+We are predicting the probability of belonging to a specific category.
+
+## How the Model Learns: Maximum Likelihood
+
+When you study calculus, you look for the maximum or minimum value of a function using derivatives.
+In logistic regression, the model does a similar optimization to learn from data.
+
+In linear regression, we typically minimize the "sum of squared errors."; however, in classification, all data points are either at 0 or 1.
+Using squared errors here would lead to a "non-convex" function, which is a nightmare for optimization because your calculus might lead you to a "local minimum" rather than the best possible answer.
+
+Instead, we use a method called **Maximum Likelihood Estimation (MLE)**.
+The goal is to find the settings or parameters that make our observed data "most likely" to have occurred.
+
+Imagine you have a bucket of red and blue marbles.
+If you blindly pick out five reds in a row, your mathematical intuition tells you that the bucket is likely mostly red.
+The model uses calculus to tweak its parameters until its predicted probabilities match the patterns it sees in your data as closely as possible.
+
+## The Log-Loss Intuition: Why Logarithms?
+
+You may be wondering why we do not just use the raw probability to measure our errors.
+Why do we see logarithms everywhere in logistic regression formulas?
+This is where the mathematical intuition gets interesting.
+
+When we train a model, we need a way to punish it for being wrong.
+If the actual answer is **1** (e.g., the email is spam) and our model predicts a probability of **0.99**, the model is doing great!
+The penalty should be almost zero.
+But what if the model predicts a probability of **0.01** for that same spam email?
+It is not just slightly wrong; it is confidently wrong.
+
+This is where the **logarithm** comes in.
+If we look at the function $y = -\log(x)$, something fascinating happens as we approach zero: \* As the probability ($x$) goes to 1, $-\log(x)$ goes to **0**.
+This means a low penalty for being right.
+\* As the probability ($x$) goes to 0, $-\log(x)$ goes to $\infty$.
+This means a massive penalty for being confidently wrong.
+
+By using the log-loss function, we create a mathematical environment where the model is terrified of being certainly wrong.
+It "forces" the model to move its parameters much more aggressively when it makes a big mistake compared to when it is already close to the right answer.
+For a calculus student, you can think of this as creating a steep slope on the error surface when the model is far away from the truth, which helps the optimization process work much more efficiently.
+
+## The Decision Boundary: Making the Call
+
+Once the math is finished and the model has been optimized, how do we make a final choice?
+We set a **decision boundary**.
+
+While the sigmoid function gives us a decimal (like 0.78), we eventually need a "Yes" or "No" answer.
+Usually, we set the threshold at **0.5**.
+If the model calculates a probability higher than 0.5, we put it in Category A. If it is lower, it goes into Category B.
+
+Think of it like a referee at a soccer game.
+The mathematics of the play gives us the trajectory of the ball, but the boundary (the goal line) is the whistle that decides whether it counts as a point or not.
+
+## Why This Matters
+
+For a student who is used to the rigid, continuous world of calculus, Logistic Regression can initially feel confusing because it mixes infinite lines with binary categories.
+However, the transition is quite elegant.
+
+You are not learning a new math.
+You are learning how to use your existing knowledge of functions, limits, and derivatives to solve a different kind of problem.
+You are taking a linear foundation and applying a logical "S-curve" to make it useful for decision-making.
+
+The next time you see a "black box" algorithm, remember that beneath the surface, it is just calculus doing the heavy lifting to turn raw data into meaningful classifications.
