@@ -56,7 +56,7 @@ As your linear input ($z$) becomes a very large positive number, the denominator
 Conversely, as the input becomes a very large negative number, $e^{-z}$ grows toward infinity, making the whole fraction approach **0**.
 Right in the middle, when the input is exactly 0, the output is exactly **0.5**.
 
-![Logistic Regression](../../DSCI_542_lab1_karanb18/img/logistic_regression.png)
+![Logistic Regression](img/logistic_regression.png)
 
 By using this "S-shaped" curve as a wrapper around our linear equation, we ensure that all y-values are between 0 and 1.
 We are no longer predicting a point on an infinite line.
@@ -64,7 +64,7 @@ We are predicting the probability of belonging to a specific category.
 
 ## How the Model Learns: Maximum Likelihood
 
-When you study calculus, you look for the maximum or minimum value of a function using derivatives.
+When you study calculus, you look for the maximum or minimum value of a function using first and second derivatives.
 In logistic regression, the model does a similar optimization to learn from data.
 
 In linear regression, we typically minimize the "sum of squared errors."; however, in classification, all data points are either at 0 or 1.
@@ -116,8 +116,8 @@ The mathematics of the play gives us the trajectory of the ball, but the boundar
 For a student who is used to the rigid, continuous world of calculus, Logistic Regression can initially feel confusing because it mixes infinite lines with binary categories.
 However, the transition is quite elegant.
 
-You are not learning a new math.
+You are not learning a new concept in math.
 You are learning how to use your existing knowledge of functions, limits, and derivatives to solve a different kind of problem.
-You are taking a linear foundation and applying a logical "S-curve" to make it useful for decision-making.
+You are taking a linear foundation and applying a suitable "S-curve" to make it useful for decision-making.
 
-The next time you see a "black box" algorithm, remember that beneath the surface, it is just calculus doing the heavy lifting to turn raw data into meaningful classifications.
+The next time you see a "black box" algorithm, remember that beneath the surface, it might just be calculus doing the heavy lifting to turn raw data into a meaningful model for predictions.
